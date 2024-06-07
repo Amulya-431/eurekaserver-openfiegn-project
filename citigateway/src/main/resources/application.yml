@@ -1,0 +1,12 @@
+spring:  
+  cloud:
+    gateway:
+      routes:
+        - id: comment-service
+          uri: lb://COMMENT-SERVICE/comments       
+          predicates:
+            - Path=/comments/**
+        - id: data-service
+          uri: lb://data-service/posts        
+          predicates:
+            - Path=/posts/**
